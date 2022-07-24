@@ -12,9 +12,45 @@ You can view the live website [here]( "Hike Slovakia").
 
 ### Site Goals
 
+#### Site Owner's Goals
+
+* Letting people know about 'Hike Slovakia'.
+* Motivating people to explore Slovakia and its hiking trails.
+* Making profit from providing guiding services.
+* Benefitting from an automated booking system. 
+* Creating opportunity to scale the business.
+
+#### Site User's Goals
+
+* Exploring Slovakia using the services of an experienced guide.
+* Finding information about all scheduled hikes, selecting & booking any with ease.
+* Learning about hiking trails & destinations in Slovakia.
+
 ### User Stories
 
-### Planned Features
+As a guest / not logged in user, I want to be able to:
+* easily understand what the purpose of the website is.
+* navigate the website easily, so that I can find any relevant content.
+* find more information about the company, so that I can understand more about what they are doing.
+* view an offering of all guided hikes posted on the website.
+* find general details of any guided hike, as well as find out what dates they are scheduled on.
+* start the booking process of the scheduled hike I am interested in.
+* select the number of people I am booking the hike for.
+* contact the business owner / administrator, so that I can ask any specific questions and get more information.
+* view the website clearly on multiple devices, including my mobile device, so that I can achieve my other goals on the go.
+* register on the website so that I can book / pay for a hike I am interested in.
+
+As a registered / logged in user, in addition to the above, I want to be able to:
+* log into my account so that I can use the website’s services.
+* securely pay for the scheduled hike(s) I choose to book.
+* receive a confirmation email after I successfully book my hike(s).
+* log out.
+
+As an admin, I want to be able to:
+* add a new hike offering, so that I can expand my services offering.
+* update and delete any existing hike offering, so that I can stay flexible in my offerings in accordance with my business needs.
+* schedule a new hike.
+* access the Django admin portal easily.
 
 ### Wireframes
 
