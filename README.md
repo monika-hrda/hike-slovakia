@@ -52,6 +52,18 @@ As an admin, I want to be able to:
 * schedule a new hike.
 * access the Django admin portal easily.
 
+### Planned Features
+
+* Navigation menu on all pages - changes contents depending on user status
+* Home page with information on the site purpose
+* User authentication (register, login, logout)
+* List of guided hikes / hike offerings
+* Guided hike detail page
+* Hike booking / payment
+* Admin interface
+* 404 & 500 error pages
+* Responsive design
+
 ### Wireframes
 
 ### Design
@@ -64,6 +76,9 @@ As an admin, I want to be able to:
 
 ***
 ## Notes on Development Process
+
+* Trello Board has been used since the beginning of development to track progress, capture ideas, and make notes (screenshot from early on in the process)
+![trello board](docs/readme-img/trello-board.jpg)
 
 ***
 ## Database Design
