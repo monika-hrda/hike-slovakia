@@ -66,6 +66,27 @@ As an admin, I want to be able to:
 
 ### Wireframes
 
+* Home page
+![home page wireframe](docs/wireframes/home.png)
+
+* Hike Offerings page
+![classes page wireframe](docs/wireframes/hike-offerings.png)
+
+* Hike Detail page
+![classes page wireframe](docs/wireframes/hike-detail.png)
+
+* Profile page
+![profile page wireframe](docs/wireframes/profile.png)
+
+* Register page
+![register page wireframe](docs/wireframes/register.png)
+
+* Login page
+![login page wireframe](docs/wireframes/login.png)
+
+* 404 page
+![404 page wireframe](docs/wireframes/404.png)
+
 ### Design
 
 * #### Colour Scheme
