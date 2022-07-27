@@ -1,0 +1,28 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: url('/media/homepage_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 72.4px);
+}
+
+h1 {
+    color: white;
+}
+
+/* ---------------------------------------- Buttons */
+
+.explore-hikes-btn {
+    background: white;
+    color: black;
+    min-width: 300px;
+}
+
+.explore-hikes-btn:hover,
+.explore-hikes-btn:active,
+.explore-hikes-btn:focus {
+    background: black;
+    color: white;
+}
