@@ -1,0 +1,30 @@
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto text-uppercase">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Hikes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Booking</a>
+        </li>
+        {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Profile</a>
+            </li>
+            {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hikes Management</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
