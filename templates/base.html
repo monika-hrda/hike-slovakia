@@ -19,6 +19,7 @@
     {% block corecss %}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
             integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik&display=swap">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -47,7 +48,7 @@
         <!-- NAVBAR (code from https://getbootstrap.com/docs/4.6/components/navbar/ & customized) -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white px-5">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <h2>Hike Slovakia</h2>
+                <h2 class="mb-0"><strong>Hike Slovakia</strong></h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -6,6 +6,7 @@ body {
     background: url('/media/homepage_background.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 72.4px);
+    font-family: 'Rubik', sans-serif;
 }
 
 h1 {
