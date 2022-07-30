@@ -4,13 +4,13 @@ from .models import Hike
 
 class HikeAdmin(admin.ModelAdmin):
     list_display = (
-        'difficulty',
         'title',
-        'description',
+        'difficulty',
         'price',
+        'image',
     )
 
-    ordering = ('difficulty',)
+    ordering = ('title',)
 
 
 admin.site.register(Hike, HikeAdmin)
