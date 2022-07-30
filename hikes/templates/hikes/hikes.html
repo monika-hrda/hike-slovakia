@@ -1,6 +1,46 @@
-{% for hike in hikes %}
-    <h3>{{ hike.title }}</h3>
-    <p>{{ hike.difficulty }}</p>
-    <p>{{ hike.description }}</p>
-    <p>{{ hike.price }}</p>
-{% endfor %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h2>Guided Hikes</h2>
+                <hr class="w-50 mb-5">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <div class="row">
+                    {% for hike in hikes %}
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="card h-100 border rounded">
+                                {% if hike.image %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ hike.image.url }}" alt="{{ hike.title }}">
+                                </a>
+                                {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="/media/default_image.jpg" alt="{{ hike.title }}">
+                                </a>
+                                {% endif %}
+                                <div class="card-body text-center pb-0">
+                                    <h4 class="mb-0 font-weight-bold">{{ hike.title }}</h4>
+                                </div>
+                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-left">{{ hike.difficulty }}</p>
+                                            <p class="mb-0 text-left font-weight-bold">€ {{ hike.price }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
