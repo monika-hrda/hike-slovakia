@@ -15,6 +15,7 @@ class HikeAdmin(admin.ModelAdmin):
 
 class ScheduledHikeAdmin(admin.ModelAdmin):
     list_display = ('date', 'hike')
+    list_filter = ('hike', 'date')
 
 
 admin.site.register(Hike, HikeAdmin)

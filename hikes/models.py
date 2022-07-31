@@ -30,3 +30,10 @@ class ScheduledHike(models.Model):
 
     def __str__(self):
         return f'Hike {self.hike} is scheduled for {self.date}'
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['hike', 'date'],
+                name='unique_hike'),
+        ]
