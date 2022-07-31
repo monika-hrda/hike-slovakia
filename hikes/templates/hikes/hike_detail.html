@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            <div class="image-container my-2">
+                {% if hike.image %}
+                    <img class="card-img-top img-fluid" src="{{ hike.image.url }}" alt="{{ hike.title }}">
+                {% else %}
+                    <img class="card-img-top img-fluid" src="/media/default_image.jpg" alt="{{ hike.title }}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="hike-details-container mb-5 mt-1 mt-lg-5">
+                <h4 class="mb-1 font-weight-bold">{{ hike.title }}</h4>
+                <p class="lead text-uppercase mb-0 text-left">{{ hike.get_difficulty_display }}</p>
+                <p class="lead mb-0 text-left font-weight-bold">€ {{ hike.price }}</p>
+                <p class="mt-3">{{ hike.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

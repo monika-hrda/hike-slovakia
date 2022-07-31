@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Hike
 
 
@@ -12,3 +12,15 @@ def all_hikes(request):
     }
 
     return render(request, 'hikes/hikes.html', context)
+
+
+def hike_detail(request, hike_id):
+    """ A view to show individual hike details """
+
+    hike = get_object_or_404(Hike, pk=hike_id)
+
+    context = {
+        'hike': hike,
+    }
+
+    return render(request, 'hikes/hike_detail.html', context)
