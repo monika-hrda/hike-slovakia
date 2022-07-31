@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hike
+from .models import Hike, ScheduledHike
 
 
 class HikeAdmin(admin.ModelAdmin):
@@ -13,4 +13,9 @@ class HikeAdmin(admin.ModelAdmin):
     ordering = ('title',)
 
 
+class ScheduledHikeAdmin(admin.ModelAdmin):
+    list_display = ('date', 'hike')
+
+
 admin.site.register(Hike, HikeAdmin)
+admin.site.register(ScheduledHike, ScheduledHikeAdmin)

@@ -22,3 +22,11 @@ class Hike(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+
+class ScheduledHike(models.Model):
+    hike = models.ForeignKey('Hike', on_delete=models.CASCADE)
+    date = models.DateField()
+
+    def __str__(self):
+        return f'Hike {self.hike} is scheduled for {self.date}'
