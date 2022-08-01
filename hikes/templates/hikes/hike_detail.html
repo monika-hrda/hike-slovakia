@@ -46,3 +46,25 @@
     </div>
 </div>
 {% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        const numPeopleInput = document.getElementById("num-people-input");
+        const bookHikeButton = document.getElementById("book-hike-button");
+
+        numPeopleInput.addEventListener("input", () => {
+            // Ensures that the number of people input is always clean and never empty
+            numPeopleInput.value = numPeopleInput.value.trim() || "1";
+
+            let correctPersonWord;
+            if (numPeopleInput.value == "1") {
+                correctPersonWord = "Person";
+            } else {
+                correctPersonWord = "People";
+            }
+
+            bookHikeButton.innerText = `Book Hike for ${numPeopleInput.value} ${correctPersonWord}`;
+        });
+    </script>
+{% endblock %}
