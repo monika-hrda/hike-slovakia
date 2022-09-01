@@ -10,7 +10,7 @@
                 {% if hike.image %}
                     <img class="card-img-top img-fluid" src="{{ hike.image.url }}" alt="{{ hike.title }}">
                 {% else %}
-                    <img class="card-img-top img-fluid" src="/media/default_image.jpg" alt="{{ hike.title }}">
+                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}default_image.jpg" alt="{{ hike.title }}">
                 {% endif %}
             </div>
         </div>
@@ -33,7 +33,7 @@
                         </select>
                     </div>
                     <div class="form-group w-50">
-                        <label for="num-people-input" id="num-people-input-label"><strong>Number of hikers:</strong></label>
+                        <label for="num-people-input" id="num-people-input-label"><strong>Number of hikers (max 5):</strong></label>
                         <input class="form-control" type="number" name="number_of_people" id="num-people-input" value="1" min="1"
                             max="5" required />
                     </div>
