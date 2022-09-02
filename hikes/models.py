@@ -25,8 +25,8 @@ class Hike(models.Model):
 
 
 class ScheduledHike(models.Model):
-    hike = models.ForeignKey('Hike', editable=False, on_delete=models.CASCADE)
-    date = models.DateField(editable=False)
+    hike = models.ForeignKey('Hike', on_delete=models.CASCADE)
+    date = models.DateField()
 
     def __str__(self):
         return f'Hike {self.hike} is scheduled for {self.date}'
