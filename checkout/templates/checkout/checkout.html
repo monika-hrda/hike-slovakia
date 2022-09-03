@@ -9,16 +9,55 @@
             <h2>Review Your Booking</h2>
             <hr class="w-50 mb-2 mb-md-5">
         </div>
-        {{ hike.title }}
-        {{ hike.price }}
-        {{ hike_date }}
-        {{ num_hikers }}
-        {{ price_total }}
     </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Hike:</p>
+        <p class="col-md-7">{{ hike.title }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Date:</p>
+        <p class="col-md-7">{{ hike_date }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Price:</p>
+        <p class="col-md-7">€{{ hike.price | floatformat:2 }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Number of hikers:</p>
+        <p class="col-md-7">{{ num_hikers }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3"><strong>Total:</strong></p>
+        <p class="col-md-7"><strong>€{{ price_total | floatformat:2 }}</strong></p>
+    </div>
+
     <div class="row">
-        <div class="col text-center mt-3">
+        <div class="col-12 text-center mt-5">
             <h2>Checkout</h2>
-            <hr class="w-50 mb-2 mb-md-5">
+            <hr class="w-50">
+        </div>
+        <div class="col-12">
+            <p class="text-center text-muted">Please enter your card details to complete your booking</p>
+        </div>
+        <div class="col-12">
+            <form action="" method="POST" id="payment-form">
+                {% csrf_token %}
+                <fieldset class="px-3">
+                    <!-- A Stripe card element will go here -->
+                    <div class="mb-3" id="card-element"></div>
+                    <!-- Used to display form errors -->
+                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                </fieldset>
+
+                <div class="submit-button text-right mt-3 mb-2">
+                    <button id="submit-button" class="btn rounded-1 mt-2 py-2 my-1 book-hike-btn">
+                        <span class="font-weight-bold">Complete Booking</span>
+                    </button>
+                    <p class="small text-danger my-1">
+                        <span>Your card will be charged <strong>€{{ price_total | floatformat:2 }}</strong></span>
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
 </div>
