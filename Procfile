@@ -1,0 +1,1 @@
+web: gunicorn hike_slovakia.wsgi:application
