@@ -2,12 +2,25 @@
 {% load static %}
 
 {% block content %}
-
-<h2>CHECKOUT</h2>
-{{ hike.title }}
-{{ hike.price }}
-{{ hike_date }}
-{{ num_hikers }}
-{{ price_total }}
+<div class="overlay"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2>Review Your Booking</h2>
+            <hr class="w-50 mb-2 mb-md-5">
+        </div>
+        {{ hike.title }}
+        {{ hike.price }}
+        {{ hike_date }}
+        {{ num_hikers }}
+        {{ price_total }}
+    </div>
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2>Checkout</h2>
+            <hr class="w-50 mb-2 mb-md-5">
+        </div>
+    </div>
+</div>
 
 {% endblock %}
