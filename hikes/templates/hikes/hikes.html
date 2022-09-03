@@ -22,7 +22,7 @@
                                 </a>
                                 {% else %}
                                 <a href="{% url 'hike_detail' hike.id %}">
-                                    <img class="card-img-top img-fluid" src="/media/default_image.jpg" alt="{{ hike.title }}">
+                                    <img class="card-img-top img-fluid" src="{% static '/images/default_image.jpg' %}" alt="{{ hike.title }}">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">

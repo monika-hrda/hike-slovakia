@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'home',
     'hikes',
     'checkout',
+    'cloudinary_storage',
+    'cloudinary',
 
     # Other
     'crispy_forms',
@@ -175,6 +177,10 @@ if 'DEVELOPMENT' in os.environ:
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Cloudinary storage set up
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
