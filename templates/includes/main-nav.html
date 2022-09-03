@@ -12,7 +12,7 @@
             </li>
             {% if request.user.is_superuser %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hikes Management</a>
+                    <a class="nav-link" href="{% url 'add_hike' %}">Hikes Management</a>
                 </li>
             {% endif %}
             <li class="nav-item">

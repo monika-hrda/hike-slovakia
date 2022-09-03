@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <hr>
+            <h2 class="logo-font mb-4">Hike Management</h2>
+            <h5 class="text-muted">Add a Hike</h5>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form method="POST" action="{% url 'add_hike' %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-right">
+                    <a class="btn book-hike-btn rounded-1" href="{% url 'hikes' %}">Cancel</a>
+                    <button class="btn rounded-1 mt-2 py-2 my-1 book-hike-btn" type="submit">Add Hike</button>
+                </div>
+            </form>
+        </div>            
+    </div>
+</div>
+{% endblock %}
