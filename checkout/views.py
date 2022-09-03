@@ -3,7 +3,7 @@ from django.contrib import messages
 from hikes.models import Hike
 
 
-def checkout(request, hike_id):
+def view_checkout(request, hike_id):
 
     hike = get_object_or_404(Hike, pk=hike_id)
 
