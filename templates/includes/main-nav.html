@@ -3,9 +3,6 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'hikes' %}">Hikes</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Booking</a>
-        </li>
         {% if request.user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="#">My Profile</a>
