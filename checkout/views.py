@@ -37,3 +37,30 @@ def view_basket(request, hike_id):
     }
 
     return render(request, template, context)
+
+
+def checkout(request):
+
+    local_storage = localStoragePy('hike-slovakia', 'json')
+    hike_date = local_storage.getItem('hike_date')
+    num_hikers = local_storage.getItem('num_hikers')
+    price_total = local_storage.getItem('price_total')
+    hike_id = local_storage.getItem('hike_id')
+
+    hike = get_object_or_404(Hike, pk=hike_id)
+
+    print(type(hike_date))
+    print(type(price_total))
+    print(hike.title)
+
+    # order_form = OrderForm()
+    template = 'checkout/checkout.html'
+    context = {
+        'hike': hike,
+        'hike_date': hike_date,
+        'num_hikers': num_hikers,
+        'price_total': price_total,
+        # 'order_form': order_form,
+    }
+
+    return render(request, template, context)
