@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2>Review Your Booking</h2>
+            <hr class="w-50 mb-2 mb-md-5">
+        </div>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Hike:</p>
+        <p class="col-md-7">{{ hike.title }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Date:</p>
+        <p class="col-md-7">{{ hike_date }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Price:</p>
+        <p class="col-md-7">€{{ hike.price | floatformat:2 }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3">Number of hikers:</p>
+        <p class="col-md-7">{{ num_hikers }}</p>
+    </div>
+    <div class="row offset-2">
+        <p class="col-md-3"><strong>Total:</strong></p>
+        <p class="col-md-7"><strong>€ {{ price_total | floatformat:2 }}</strong></p>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center mt-5">
+            <a href="" class="btn btn-lg rounded-1 text-uppercase mt-2 py-2 my-1 book-hike-btn">
+                <span class="font-weight-bold">Go to Checkout</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
