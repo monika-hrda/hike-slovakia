@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.conf import settings
 from localStoragePy import localStoragePy
 from hikes.models import Hike
 
@@ -40,6 +41,8 @@ def view_basket(request, hike_id):
 
 
 def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     local_storage = localStoragePy('hike-slovakia', 'json')
     hike_date = local_storage.getItem('hike_date')
@@ -61,6 +64,8 @@ def checkout(request):
         'num_hikers': num_hikers,
         'price_total': price_total,
         # 'order_form': order_form,
+        'stripe_public_key': stripe_public_key,
+        'client_secret': 'test client secret',
     }
 
     return render(request, template, context)
