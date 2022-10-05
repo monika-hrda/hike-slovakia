@@ -22,7 +22,7 @@
             <p class="text-center text-muted">Please enter your card details to complete your booking</p>
         </div>
         <div class="col-12">
-            <form action="" method="POST" id="payment-form">
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="px-3">
                     <!-- A Stripe card element will go here -->
