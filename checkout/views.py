@@ -11,16 +11,12 @@ def view_basket(request, hike_id):
 
     hike = get_object_or_404(Hike, pk=hike_id)
 
-    hike_date = None
-    if 'hike_date' in request.POST:
-        hike_date = request.POST['hike_date']
+    hike_date = request.POST.get('hike_date')
     if not hike_date:
         messages.error(request, "There is nothing to book at the moment")
         return redirect(reverse('hikes'))
 
-    num_hikers = 1
-    if 'number_of_people' in request.POST:
-        num_hikers = request.POST['number_of_people']
+    num_hikers = request.POST.get('number_of_people', '1')
 
     price_total = Decimal(hike.price) * Decimal(num_hikers)
 
@@ -46,29 +42,27 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     local_storage = localStoragePy('hike-slovakia', 'json')
-    if not local_storage:
+
+    hike_id = local_storage.getItem('hike_id')
+    if not hike_id:
         messages.error(request, "There is nothing to book at the moment")
         return redirect(reverse('hikes'))
-
     hike_date = local_storage.getItem('hike_date')
     num_hikers = int(local_storage.getItem('num_hikers'))
     price_total = Decimal(local_storage.getItem('price_total'))
-    hike_id = local_storage.getItem('hike_id')
 
     hike = get_object_or_404(Hike, pk=hike_id)
 
-    stripe_total = round(price_total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY,
-    )
+    if request.method == 'POST':
+        pass
 
-    print(type(hike_date))
-    print(type(price_total))
-    print(hike.title)
-
-    # order_form = OrderForm()
+    else:
+        stripe_total = round(price_total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -80,7 +74,6 @@ def checkout(request):
         'hike_date': hike_date,
         'num_hikers': num_hikers,
         'price_total': price_total,
-        # 'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
