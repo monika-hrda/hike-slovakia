@@ -4,15 +4,25 @@ from django.contrib import messages
 from django.conf import settings
 from localStoragePy import localStoragePy
 import stripe
-from hikes.models import Hike
+from .models import Booking
+from hikes.models import Hike, ScheduledHike
+
+
+def _get_hike_date_from_id(hike_date_id):
+    try:
+        hike_date = ScheduledHike.objects.get(id=hike_date_id).date
+    except ScheduledHike.DoesNotExist:
+        hike_date = None
+
+    return hike_date
 
 
 def view_basket(request, hike_id):
 
     hike = get_object_or_404(Hike, pk=hike_id)
 
-    hike_date = request.POST.get('hike_date')
-    if not hike_date:
+    hike_date_id = request.POST.get('hike_date_id')
+    if not hike_date_id:
         messages.error(request, "There is nothing to book at the moment")
         return redirect(reverse('hikes'))
 
@@ -21,10 +31,12 @@ def view_basket(request, hike_id):
     price_total = Decimal(hike.price) * Decimal(num_hikers)
 
     local_storage = localStoragePy('hike-slovakia', 'json')
-    local_storage.setItem('hike_date', hike_date)
+    local_storage.setItem('hike_date_id', hike_date_id)
     local_storage.setItem('num_hikers', num_hikers)
     local_storage.setItem('price_total', price_total)
     local_storage.setItem('hike_id', hike_id)
+
+    hike_date = _get_hike_date_from_id(hike_date_id)
 
     template = 'checkout/basket.html'
     context = {
@@ -47,14 +59,28 @@ def checkout(request):
     if not hike_id:
         messages.error(request, "There is nothing to book at the moment")
         return redirect(reverse('hikes'))
-    hike_date = local_storage.getItem('hike_date')
+    hike_date_id = local_storage.getItem('hike_date_id')
     num_hikers = int(local_storage.getItem('num_hikers'))
     price_total = Decimal(local_storage.getItem('price_total'))
 
-    hike = get_object_or_404(Hike, pk=hike_id)
+    hike_date = _get_hike_date_from_id(hike_date_id)
+
+    try:
+        hike = Hike.objects.get(pk=hike_id)
+    except Hike.DoesNotExist:
+        messages.error(request, (
+            "The requested hike wasn't found in our database. "
+            "Please call us for assistance!")
+        )
+        return redirect(reverse('hikes'))
 
     if request.method == 'POST':
-        pass
+        booking = Booking.objects.create(
+            hike=hike, hike_date=hike_date,
+            num_hikers=num_hikers, price_total=price_total
+        )
+        booking.save()
+        return redirect(reverse('checkout_success', args=[booking.id]))
 
     else:
         stripe_total = round(price_total * 100)
@@ -76,6 +102,21 @@ def checkout(request):
         'price_total': price_total,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+    }
+
+    return render(request, template, context)
+
+
+def checkout_success(request, booking_id):
+    booking = get_object_or_404(Booking, pk=booking_id)
+    messages.success(request, f'Booking successfully processed! \
+        We are looking forward to meeting you on {booking.hike_date}.')
+
+    localStoragePy('hike-slovakia', 'json').clear()
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'booking': booking,
     }
 
     return render(request, template, context)

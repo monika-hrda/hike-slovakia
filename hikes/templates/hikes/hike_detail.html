@@ -25,10 +25,10 @@
                     {% csrf_token %}
                     <div class="form-group w-50">
                         <label for="hike-date-dropdown" id="hike-date-dropdown-label"><strong>Available dates:</strong></label>
-                        <select class="form-control rounded-1" name="hike_date" id="hike-date-dropdown" required>
+                        <select class="form-control rounded-1" name="hike_date_id" id="hike-date-dropdown" required>
                             <option value="" disabled selected>Choose a date ...</option>
                             {% for scheduled_hike in scheduled_hikes %}
-                                <option value="{{ scheduled_hike.date }}">{{ scheduled_hike.date }}</option>
+                                <option value="{{ scheduled_hike.id }}">{{ scheduled_hike.date }}</option>
                             {% endfor %}
                         </select>
                     </div>
