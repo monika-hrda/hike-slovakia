@@ -42,10 +42,10 @@
                             class="btn rounded-1 mt-2 py-2 {% if scheduled_hikes|length == 0 %} regular-dis {% else %} regular-btn {% endif %}"
                             {% if scheduled_hikes|length == 0 %} disabled {% endif %}>BOOK HIKE FOR 1 PERSON</button>
                     {% else %}
-                        <label class="form-check-label" for="id-save-info">
+                        <p>
                             <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
                             <a class="text-info" href="{% url 'account_login' %}">log in</a> to book this hike.
-                        </label>
+                        </p>
                     {% endif %}
                 </form>
             </div>
