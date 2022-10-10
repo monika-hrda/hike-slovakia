@@ -25,31 +25,39 @@ h1 {
 
 /* ---------------------------------------- Buttons */
 
-.explore-hikes-btn {
+.explore-hikes-btn,
+.secondary-btn {
     background: white;
     color: black;
-    min-width: 300px;
+    border: 1px solid black;
 }
 
 .explore-hikes-btn:hover,
 .explore-hikes-btn:active,
-.explore-hikes-btn:focus {
+.explore-hikes-btn:focus,
+.secondary-btn:hover,
+.secondary-btn:active,
+.secondary-btn:focus {
     background: black;
     color: white;
 }
 
-.book-hike-btn {
+.home-page-btn {
+    min-width: 300px;
+}
+
+.regular-btn {
     background: black;
     color: white;
 }
 
-.book-hike-btn-dis {
+.regular-dis {
     background: grey;
 }
 
-.book-hike-btn:hover,
-.book-hike-btn:active,
-.book-hike-btn:focus {
+.regular-btn:hover,
+.regular-btn:active,
+.regular-btn:focus {
     background: white;
     color: black;
     border: 1px solid black;

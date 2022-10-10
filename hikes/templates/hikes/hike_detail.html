@@ -39,8 +39,8 @@
                                 max="5" required />
                         </div>
                         <button type="submit" id="book-hike-button"
-                            class="btn rounded-1 mt-2 py-2 {% if scheduled_hikes|length == 0 %} book-hike-btn-dis {% else %} book-hike-btn {% endif %}"
-                            {% if scheduled_hikes|length == 0 %} disabled {% endif %}>Book Hike for 1 Person</button>
+                            class="btn rounded-1 mt-2 py-2 {% if scheduled_hikes|length == 0 %} regular-dis {% else %} regular-btn {% endif %}"
+                            {% if scheduled_hikes|length == 0 %} disabled {% endif %}>BOOK HIKE FOR 1 PERSON</button>
                     {% else %}
                         <label class="form-check-label" for="id-save-info">
                             <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
@@ -66,12 +66,12 @@
 
             let correctPersonWord;
             if (numPeopleInput.value == "1") {
-                correctPersonWord = "Person";
+                correctPersonWord = "PERSON";
             } else {
-                correctPersonWord = "People";
+                correctPersonWord = "PEOPLE";
             }
 
-            bookHikeButton.innerText = `Book Hike for ${numPeopleInput.value} ${correctPersonWord}`;
+            bookHikeButton.innerText = `BOOK HIKE FOR ${numPeopleInput.value} ${correctPersonWord}`;
         });
     </script>
 {% endblock %}

@@ -33,7 +33,10 @@
 
     <div class="row">
         <div class="col-12 text-center mt-5">
-            <a href="{% url 'checkout' %}" class="btn btn-lg rounded-1 text-uppercase mt-2 py-2 my-1 book-hike-btn">
+            <a href="{% url 'hike_detail' hike.id %}" class="btn btn-lg rounded-1 text-uppercase mt-2 py-2 my-1 secondary-btn">
+                <span>Edit Booking</span>
+            </a>
+            <a href="{% url 'checkout' %}" class="btn btn-lg rounded-1 text-uppercase mt-2 py-2 my-1 regular-btn">
                 <span class="font-weight-bold">Go to Checkout</span>
             </a>
         </div>
