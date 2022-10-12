@@ -28,7 +28,7 @@ h1 {
 .explore-hikes-btn,
 .secondary-btn {
     background: white;
-    color: black;
+    color: black !important;
     border: 1px solid black;
 }
 
@@ -78,6 +78,30 @@ h1 {
 
 .toast-capper {
     height: 4px;
+}
+
+/* ---------------------------------------- Allauth form formatting */
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem; /* mt-4 */
+    color: #6c757d; /* text-secondary */
+}
+
+.allauth-form-inner-content input {
+    border-color: #000;
+    border-radius: 6px;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
+}
+
+.allauth-form-inner-content a {
+	color: #17a2b8; /* text-info */
 }
 
 /* ---------------------------------------- Media queries */
