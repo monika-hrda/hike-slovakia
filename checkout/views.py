@@ -135,7 +135,7 @@ def checkout_success(request, booking_number):
 
 def send_confirmation_email(booking):
     """Send the user a confirmation email"""
-    cust_email = booking.user_profile
+    cust_email = booking.user_profile.user.email
     subject = render_to_string(
         'checkout/confirmation_emails/confirmation_email_subject.txt',
         {'booking': booking})
