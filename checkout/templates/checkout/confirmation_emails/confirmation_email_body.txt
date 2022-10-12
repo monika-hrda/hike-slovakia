@@ -3,14 +3,17 @@ Hello {{ booking.user_profile }}!
 This is a confirmation of your booking at Hike Slovakia. Your booking information is below:
 
 Booking Number: {{ booking.booking_number }}
-Booking Date: {{ booking.payment_date }}
+Date of Booking: {{ booking.payment_date }}
+
 Hike: {{ booking.hike }}
-Hike Date: {{ booking.hike_date }}
+Date of Booked Hike: {{ booking.hike_date }}
 Number of Hikers: {{ booking.num_hikers }}
 
-Price Total: ${{ booking.price_total }}
+Price Total:€ {{ booking.price_total }}
 
-If you have any questions, feel free to contact us at monika@hikeslovakia.com.
+You will receive a second email with instructions on meetup location and further details.
+
+If you have any questions in the meantime, feel free to contact us at admin@hikeslovakia.com.
 
 Thank you for your booking!
 
