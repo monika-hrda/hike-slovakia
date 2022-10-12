@@ -127,6 +127,12 @@ As an admin, I want to be able to:
 
 ### Continuous Testing - Issues and Resolutions to issues found during testing
 
+During the development process, the application was continuously tested and bugs and issues that were found were resolved. A few examples:
+
+* When a user redirected to a checkout view manually (without selecting a hike to book first), a 500 internal server error was raised. This was happening due to the view initially incorrectly checking whether a local storage existed. (Which it did since we were initialising it there.) The bug was fixed by checking for existence of a hike_id in the local storage instead, and now if it does not exist, the user will be brought back to all_hikes view to select a hike to book.
+
+* After implementing a confirmation email sending after a successful purchase, the checkout process started failing with 500 error. Logging details into console revealed a bug in code - customer's email was being populated with the user, rather than the user's email. The fix was rather straightforward and payment process works ok now. 
+
 ### Known Bugs and Issues
 
 ***
@@ -137,9 +143,17 @@ As an admin, I want to be able to:
 
 ### Code
 
+* project is based on and developed from [Code Institute](https://codeinstitute.net/)'s walkthrough Boutique Ado
+* code for modal from [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp)
+
 ### Content
 
 ### Media
+
+* background immage on home page from [Pixabay](https://pixabay.com/)
+* default hike image from [Pxhere](https://pxhere.com/)
+* all other images of Slovak nature currently used on hikes pages were taken by Monika Hrda
+* gif image used as a loading "spinner" found on [Icons8](https://icons8.com/preloaders/)
 
 ### Acknowledgements
 
