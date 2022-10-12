@@ -3,7 +3,7 @@ from .models import Booking
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('booking_number', 'payment_date',
+    list_display = ('booking_number', 'user_profile', 'payment_date',
                     'hike', 'hike_date', 'num_hikers',
                     'price_total',)
 

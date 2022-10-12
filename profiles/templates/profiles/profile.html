@@ -40,7 +40,36 @@
         </div>
         <div class="col-12 col-lg-6">
             <p class="text-muted">Booking History</p>
-            {{ bookings }}
+            <div class="booking-history table-responsive">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th>Booking Number</th>
+                            <th>Payment Date</th>
+                            <th>Hike</th>
+                            <th>Hike Date</th>
+                            <th>Nr of Hikers</th>
+                            <th>Price Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in bookings %}
+                        <tr>
+                            <td>
+                                <a href="#" title="{{ booking.booking_number }}">
+                                    {{ booking.booking_number|truncatechars:6 }}
+                                </a>
+                            </td>
+                            <td>{{ booking.payment_date }}</td>
+                            <td>{{ booking.hike }}</td>
+                            <td>{{ booking.hike_date }}</td>
+                            <td>{{ booking.num_hikers }}</td>
+                            <td>€ {{ booking.price_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
