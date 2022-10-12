@@ -86,3 +86,16 @@ def edit_hike(request, hike_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_hike(request, hike_id):
+    """ Delete a hike """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only admins can do that.')
+        return redirect(reverse('home'))
+
+    hike = get_object_or_404(Hike, pk=hike_id)
+    hike.delete()
+    messages.success(request, 'Hike deleted!')
+    return redirect(reverse('hikes'))
