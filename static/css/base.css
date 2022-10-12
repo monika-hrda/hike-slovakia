@@ -39,7 +39,7 @@ h1 {
 .secondary-btn:active,
 .secondary-btn:focus {
     background: black;
-    color: white;
+    color: white !important;
 }
 
 .home-page-btn {
