@@ -1,11 +1,12 @@
 from decimal import Decimal
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from localStoragePy import localStoragePy
 import stripe
-from .models import Booking
 from hikes.models import Hike, ScheduledHike
+from .models import Booking
 
 
 def _get_hike_date_from_id(hike_date_id):
@@ -17,6 +18,7 @@ def _get_hike_date_from_id(hike_date_id):
     return hike_date
 
 
+@login_required
 def view_basket(request, hike_id):
 
     hike = get_object_or_404(Hike, pk=hike_id)
@@ -49,6 +51,7 @@ def view_basket(request, hike_id):
     return render(request, template, context)
 
 
+@login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -107,6 +110,7 @@ def checkout(request):
     return render(request, template, context)
 
 
+@login_required
 def checkout_success(request, booking_id):
     booking = get_object_or_404(Booking, pk=booking_id)
     messages.success(request, f'Booking successfully processed! \
