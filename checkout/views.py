@@ -1,11 +1,14 @@
 from decimal import Decimal
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from localStoragePy import localStoragePy
 import stripe
 from hikes.models import Hike, ScheduledHike
+from profiles.models import UserProfile
 from .models import Booking
 
 
@@ -78,11 +81,14 @@ def checkout(request):
         return redirect(reverse('hikes'))
 
     if request.method == 'POST':
+        user_profile = get_object_or_404(UserProfile, user=request.user)
         booking = Booking.objects.create(
+            user_profile=user_profile,
             hike=hike, hike_date=hike_date,
             num_hikers=num_hikers, price_total=price_total
         )
         booking.save()
+        send_confirmation_email(booking)
         return redirect(reverse('checkout_success', args=[booking.booking_number]))
 
     else:
@@ -125,3 +131,21 @@ def checkout_success(request, booking_number):
     }
 
     return render(request, template, context)
+
+
+def send_confirmation_email(booking):
+    """Send the user a confirmation email"""
+    cust_email = booking.user_profile
+    subject = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_subject.txt',
+        {'booking': booking})
+    body = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_body.txt',
+        {'booking': booking, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [cust_email]
+    )
