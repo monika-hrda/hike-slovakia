@@ -3,11 +3,11 @@ from .models import Booking
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('payment_date', 'hike',
-                    'hike_date', 'num_hikers',
+    list_display = ('booking_number', 'payment_date',
+                    'hike', 'hike_date', 'num_hikers',
                     'price_total',)
 
-    readonly_fields = ('payment_date', 'price_total',)
+    readonly_fields = ('booking_number', 'payment_date', 'price_total',)
 
     ordering = ('-payment_date',)
 

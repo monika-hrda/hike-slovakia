@@ -83,7 +83,7 @@ def checkout(request):
             num_hikers=num_hikers, price_total=price_total
         )
         booking.save()
-        return redirect(reverse('checkout_success', args=[booking.id]))
+        return redirect(reverse('checkout_success', args=[booking.booking_number]))
 
     else:
         stripe_total = round(price_total * 100)
@@ -111,9 +111,10 @@ def checkout(request):
 
 
 @login_required
-def checkout_success(request, booking_id):
-    booking = get_object_or_404(Booking, pk=booking_id)
+def checkout_success(request, booking_number):
+    booking = get_object_or_404(Booking, booking_number=booking_number)
     messages.success(request, f'Booking successfully processed! \
+        Your booking number is {booking_number}. \
         We are looking forward to meeting you on {booking.hike_date}.')
 
     localStoragePy('hike-slovakia', 'json').clear()
