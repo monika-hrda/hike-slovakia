@@ -1,6 +1,8 @@
+from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
 from .models import Hike, ScheduledHike
 from .forms import HikeForm
 
@@ -18,10 +20,15 @@ def all_hikes(request):
 
 
 def hike_detail(request, hike_id):
-    """ A view to show individual hike details """
+    """
+    A view to show individual hike details.
+    Filters only scheduled hikes that are in the future.
+    """
 
     hike = get_object_or_404(Hike, pk=hike_id)
-    scheduled_hikes = ScheduledHike.objects.filter(hike=hike).order_by('date')
+
+    today = datetime.today()
+    scheduled_hikes = ScheduledHike.objects.filter(hike=hike, date__gte=today).order_by('date')
 
     context = {
         'hike': hike,
@@ -31,6 +38,7 @@ def hike_detail(request, hike_id):
     return render(request, 'hikes/hike_detail.html', context)
 
 
+@login_required
 def add_hike(request):
     """ A view to add a new hike """
 
@@ -59,7 +67,7 @@ def add_hike(request):
 
 @login_required
 def edit_hike(request, hike_id):
-    """ Edit a hike """
+    """ A view to edit a hike """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admins can do that.')
         return redirect(reverse('home'))
@@ -90,7 +98,7 @@ def edit_hike(request, hike_id):
 
 @login_required
 def delete_hike(request, hike_id):
-    """ Delete a hike """
+    """ A view to delete a hike """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admins can do that.')
         return redirect(reverse('home'))
