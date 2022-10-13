@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'hikes',
     'checkout',
     'profiles',
+    'contact',
     'cloudinary_storage',
     'cloudinary',
 
