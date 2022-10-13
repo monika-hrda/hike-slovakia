@@ -82,7 +82,13 @@
     {% block page_header %}
     {% endblock %}
 
+    <div class="wrapper">
     {% block content %}
+    {% endblock %}
+    </div>
+
+    {% block footer %}
+        {% include 'includes/footer.html' %}
     {% endblock %}
 
     {% block postloadjs %}
