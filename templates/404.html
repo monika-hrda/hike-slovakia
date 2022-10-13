@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="overlay"></div>
+    <div class="d-flex flex-column align-items-center">
+        <h1 style="color:#000;">Error 404</h1>
+        <p>Oops... this page doesn't exist.</p>
+        <a class="btn btn-lg rounded-1 text-uppercase mt-2 py-2 my-1 secondary-btn border-dark" href="{% url 'home' %}">
+            Back to home page
+        </a>
+    </div>
+</div>
+{% endblock %}
