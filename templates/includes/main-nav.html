@@ -9,7 +9,7 @@
             </li>
             {% if request.user.is_superuser %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add_hike' %}">Hikes Management</a>
+                    <a class="nav-link" href="{% url 'add_hike' %}">Add New Hike</a>
                 </li>
             {% endif %}
         {% endif %}

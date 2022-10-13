@@ -156,20 +156,20 @@ h1 {
 /* ---------------------------------------- Footer */
 
 .footer-container {
-    background-color: #282C10;
-    color: #F3FAE7;
+    background-color: #fff;
+    color: #000;
     min-height: 60px;
     padding: 15px 0 0 0;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .social-links {
-    margin:0;
     text-align: right;
 }
 
 .social-links i {
-    color: #F3FAE7;
+    padding: 0px 10px;
+    color: #000;
 }
 
 /* ---------------------------------------- Media queries */
