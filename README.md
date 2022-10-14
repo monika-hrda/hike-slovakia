@@ -128,9 +128,10 @@ As an admin, I want to be able to:
 ***
 ## Database Design
 
-![database schema](docs/readme-img/database-schema.jpg)
+![database schema](docs/readme-img/database-schema.png)
 
 The above schema shows only the tables created by me (except the auth_user one, I am however manipulating its data in my code). 
+
 Project Hike Slovakia currently contains 5 Django apps, and 5 custom models.
 
 ***
@@ -176,19 +177,7 @@ Project Hike Slovakia currently contains 5 Django apps, and 5 custom models.
 ***
 ## Testing
 
-### Validator Testing
-
-### User Stories Testing
-
-### Continuous Testing - Issues and Resolutions to issues found during testing
-
-During the development process, the application was continuously tested and bugs and issues that were found were resolved. A few examples:
-
-* When a user redirected to a checkout view manually (without selecting a hike to book first), a 500 internal server error was raised. This was happening due to the view initially incorrectly checking whether a local storage existed. (Which it did since we were initialising it there.) The bug was fixed by checking for existence of a hike_id in the local storage instead, and now if it does not exist, the user will be brought back to all_hikes view to select a hike to book.
-
-* After implementing a confirmation email sending after a successful purchase, the checkout process started failing with 500 error. Logging details into console revealed a bug in code - customer's email was being populated with the user, rather than the user's email. The fix was rather straightforward and payment process works ok now. 
-
-### Known Bugs and Issues
+Find a separate document for the [testing section here](https://github.com/monika-hrda/hike-slovakia/blob/main/TESTING.md). This is due to its size.
 
 ***
 ## Deployment
