@@ -16,7 +16,7 @@ class UserProfileForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
 
-        self.fields['phone_number'].widget.attrs['placeholder'] = 'Phone Number'
+        self.fields['phone_number'].widget.attrs['placeholder'] = 'Phone Number (only numbers allowed)'
         self.fields['phone_number'].widget.attrs['class'] = 'border-black rounded-1 profile-form-input'
         self.fields['phone_number'].label = False
 
