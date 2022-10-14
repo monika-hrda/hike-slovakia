@@ -28,7 +28,8 @@ def hike_detail(request, hike_id):
     hike = get_object_or_404(Hike, pk=hike_id)
 
     today = datetime.today()
-    scheduled_hikes = ScheduledHike.objects.filter(hike=hike, date__gte=today).order_by('date')
+    scheduled_hikes = ScheduledHike.objects.filter(
+        hike=hike, date__gte=today).order_by('date')
 
     context = {
         'hike': hike,

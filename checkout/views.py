@@ -23,7 +23,10 @@ def _get_hike_date_from_id(hike_date_id):
 
 @login_required
 def view_basket(request, hike_id):
-
+    """
+    A view to return template and data required for making a booking.
+    Saves the data to localStoragePy in the process.
+    """
     hike = get_object_or_404(Hike, pk=hike_id)
 
     hike_date_id = request.POST.get('hike_date_id')
@@ -56,6 +59,9 @@ def view_basket(request, hike_id):
 
 @login_required
 def checkout(request):
+    '''
+    A view for checkout process
+    '''
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -89,7 +95,8 @@ def checkout(request):
         )
         booking.save()
         send_confirmation_email(booking)
-        return redirect(reverse('checkout_success', args=[booking.booking_number]))
+        return redirect(reverse('checkout_success',
+                        args=[booking.booking_number]))
 
     else:
         stripe_total = round(price_total * 100)
@@ -118,6 +125,9 @@ def checkout(request):
 
 @login_required
 def checkout_success(request, booking_number):
+    '''
+    Handles successful checkouts
+    '''
     booking = get_object_or_404(Booking, booking_number=booking_number)
     messages.success(request, f'Booking successfully processed! \
         Your booking number is {booking_number}. \
@@ -134,7 +144,9 @@ def checkout_success(request, booking_number):
 
 
 def send_confirmation_email(booking):
-    """Send the user a confirmation email"""
+    """
+    Send the user a confirmation email after successful booking
+    """
     cust_email = booking.user_profile.user.email
     subject = render_to_string(
         'checkout/confirmation_emails/confirmation_email_subject.txt',

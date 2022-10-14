@@ -14,7 +14,6 @@ class ContactForm(forms.ModelForm):
         auto-generated labels and sets autofocus on first field
         """
         super().__init__(*args, **kwargs)
-        # self.fields['contact_email'].required = True
 
         placeholders = {
             'contact_email': 'Email Address',
@@ -25,6 +24,8 @@ class ContactForm(forms.ModelForm):
         self.fields['contact_email'].widget.attrs['autofocus'] = True
 
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = f'{placeholders[field]} *'
-            self.fields[field].widget.attrs['class'] = 'border-black rounded-1 contact-form-input'
+            self.fields[field].widget.attrs[
+                'placeholder'] = f'{placeholders[field]} *'
+            self.fields[field].widget.attrs['class'] = 'border-black '
+            'rounded-1 contact-form-input'
             self.fields[field].label = False

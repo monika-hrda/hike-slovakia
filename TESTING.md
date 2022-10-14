@@ -37,8 +37,18 @@ It was tested both via URI and direct input. No errors were found.
 
 "One undefined variable" was raised for 'Stripe', which now got corrected to 'stripe'. Also, 3 semicolons were found to be missing :)
 
-The project's JavaScript is now passing this validator.
+However, changing 'Stripe' to 'stripe' broke Stripe's functionality, so it's been changed back to its original state.
 
+The project's JavaScript code is now passing this validator.
+
+#### Python
+
+The [PEP8 online](http://pep8online.com/) validator website is currently not functional, so the Python code was checked by a PEP8 validator directly in my Gitpod Workspace. 
+
+All errors (mostly 'Line too long') have been corrected, except the usual issue with Django adding the `objects`, `DoesNotExist` properties to all model classes, which the IDE is not aware of (e.g. `Class 'xyz' has no 'objects' member` and `Class 'zyx' has no 'DoesNotExist' member`). These are just warnings from pylint.
+Same goes for `Instance of 'OneToOneField' has no 'username' member`. 
+
+All classes have been given docstrings.
 
 ### User Stories Testing
 

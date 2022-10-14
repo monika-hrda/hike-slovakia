@@ -13,7 +13,8 @@ class UserProfile(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # full_name = models.CharField(max_length=50, null=False, blank=False)
-    phone_number = models.CharField(max_length=20, null=True, blank=True, validators=[numeric])
+    phone_number = models.CharField(max_length=20, null=True,
+                                    blank=True, validators=[numeric])
 
     def __str__(self):
         return self.user.username

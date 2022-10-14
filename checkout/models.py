@@ -6,7 +6,13 @@ from profiles.models import UserProfile
 
 
 class Booking(models.Model):
-    booking_number = models.CharField(max_length=32, null=False, editable=False)
+    """
+    A model to record users' bookings.
+    Generates a booking number on each new order.
+    Links to a user and a hike booked.
+    """
+    booking_number = models.CharField(max_length=32,
+                                      null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
                                      related_name='bookings')
@@ -21,7 +27,7 @@ class Booking(models.Model):
 
     def _generate_booking_number(self):
         """
-        Generates a random, unique booking number using UUID, 
+        Generates a random, unique booking number using UUID,
         a random string of 32 characters
         """
         return uuid.uuid4().hex.upper()

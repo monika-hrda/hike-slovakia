@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Hike(models.Model):
+    """ Model to store hike details """
     EASY = 0
     MODERATE = 1
     DIFFICULT = 2
@@ -25,6 +26,7 @@ class Hike(models.Model):
 
 
 class ScheduledHike(models.Model):
+    """ Model to assign scheduled dates to hikes """
     hike = models.ForeignKey('Hike', on_delete=models.CASCADE)
     date = models.DateField()
 
@@ -32,6 +34,7 @@ class ScheduledHike(models.Model):
         return f'Hike {self.hike} is scheduled for {self.date}'
 
     class Meta:
+        """ Only one combination of hike/date allowed """
         constraints = [
             models.UniqueConstraint(
                 fields=['hike', 'date'],
