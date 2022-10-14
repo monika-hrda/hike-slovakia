@@ -186,21 +186,131 @@ During the development process, the application was continuously tested and bugs
 ***
 ## Deployment
 
+### Requirements for Deployment
+
+* Heroku account
+* Stripe account
+* Cloudinary account
+* GitHub account, Gitpod
+
+### Heroku Deployment
+
+This project was deployed on Heroku following these steps:
+
+#### Requirements.txt and Procfile
+
+Create these files using these steps in (GitPod) terminal:
+
+1. Type `pip3 freeze -–local > requirements.txt` to create a requirements file (it keeps track of the Python / Django dependencies that we've installed for our project)
+2. Type `echo web: python3 run.py > Procfile` to create Procfile (a Heroku-specific type of file that tells Heroku how to run our project, what command to use to start the app)
+3. Delete any additional empty lines after the line `web: gunicorn hike_slovakia.wsgi:application`
+4. Push these two files into your depository
+
+#### Create Heroku App
+
+1. Log in to Heroku and 'Create New App' from the dashboard
+2. Choose an app name (each app name has to be unique)
+3. Select the region based on your location
+4. Click 'Create App'
+5. Add config vars to Heroku - go to Heroku Settings tab, click on Reveal Config Vars, and add environment variables described below in key/value pairs
+
+#### Create Database
+
+1. Select the app from the list in Heroku
+2. Go to Heroku 'Resources' tab and in the add-ons section search for Postgres
+3. Select Heroku Postgres
+4. Select 'Submit Order Form'
+5. In the Heroku Settings tab, within the config vars section, the DATABASE_URL will appear and can be used to connect to the remote database
+6. Migrations can be ran locally against the remote database if we set up the DATABASE_URL variable in our local environment.
+7. In order to automate the process of migrating, we can add this line into Procfile (on line 1): `release: python manage.py makemigrations && python manage.py migrate`
+
+#### Environment Variables
+
+Create an env.py file within the Django app and configure the project via the following various environment variables.
+(Please note - as this file contains sensitive information, it needs to be added to the .gitignore file to not be pushed to GitHub!)
+
+It will look similar to this:
+
+```
+import os
+
+os.environ["SECRET_KEY"] = "unique secret key"
+os.environ["DEVELOPMENT"] = 'True'
+os.environ["CLOUDINARY_URL"] = 'cloudinary_url'
+
+```
+
+Add these environment variables:
+
+* SECRET_KEY - there are websites online that will help you generate random Django secret keys
+
+* DEVELOPMENT - if set, it will put the project into debug mode
+
+* EMAIL_HOST_USER - your email address used to send emails out
+
+* EMAIL_HOST_PASS - used to authenticate to the SMTP server
+
+* STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET - Stripe payments variables (you will need to set up a Stripe account)
+
+* CLOUDINARY_URL - to upload images to Cloudinary (you will need to set up a Cloudinary account)
+
+Add these variables to Heroku's Config Vars as well (do not add the DEVELOPMENT one, so that Heroku runs in production mode)
+
+#### Deploying our App to Heroku
+
+1. Navigate to the Deploy tab in Heroku and connect your app to GitHub.
+2. Deploy the branch manually.
+3. Check the build log for errors.
+4. Once Heroku completed the build process, you will see a 'Your App Was Successfully Deployed' message and a link to the live site.
+5. You can also choose to enable Automatic deploys. 
+
+#### Alternative Heroku deployment via CLI
+
+0. In your CLI install Heroku by typing `npm install -g heroku`
+1. Login to Heroku by typing `heroku login -i`
+2. Get your app name from Heroku by typing command `heroku apps`
+3. Set the Heroku remote (replace the <app_name> with your actual app name): `heroku git:remote -a <app_name>`
+4. Add and commit changes to your code (commands `git add .` & `git commit -m "Deploy to Heroku via CLI"`)
+5. Push to GitHub `git push origin main`
+6. Push to Heroku `git push heroku main`
+7. Your Heroku app will be built and you will see your deployed app's URL
+
+### Forking the Repository
+
+This project can be forked following these steps: 
+
+1. Log in to GitHub and locate this project (you are most likely here). 
+2. Locate the Fork button at the top right corner of the page and click on it. 
+3. A copy of the original repository is now in your GitHub account
+
+### Local Clone
+
+1. Navigate to this GitHub repository (you are most likely here)
+2. Click on the Code dropdown
+3. Copy the URL of the repository in the HTTPS tab
+4. Use your IDE of choice to open its terminal
+5. Change the current working directory to the location where you want the cloned directory
+6. Type `git clone` and then paste the previously copied URL
+7. Press enter to create your local clone
+8. Create the above described env.py file with your own values
+9. Install the project requirements by using the command `pip3 install -r requirements.txt`
+10. Run the program
+
 ***
 ## Credits
 
 ### Code
 
 * project is based on and developed from [Code Institute](https://codeinstitute.net/)'s walkthrough Boutique Ado
+* Django documentation has been researched extensively
 * code for modal from [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp)
-
-### Content
+* gte lookup for filtering by future date on [Stack Overflow](https://stackoverflow.com/questions/45947222/django-queryset-with-datetime-need-to-get-all-future-dated-entries)
 
 ### Media
 
 * background immage on home page from [Pixabay](https://pixabay.com/)
 * default hike image from [Pxhere](https://pxhere.com/)
-* all other images of Slovak nature currently used on hikes pages were taken by Monika Hrda
+* all other images of Slovak nature currently used on hikes' pages were taken by Monika Hrda
 * gif image used as a loading "spinner" found on [Icons8](https://icons8.com/preloaders/)
 
 ### Acknowledgements
