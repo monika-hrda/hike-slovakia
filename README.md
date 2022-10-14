@@ -5,7 +5,10 @@ The app was built as my fourth milestone project for Diploma in Full Stack Softw
 
 Hike Slovakia is a multi-page eCommerce web application for both visitors of and people living in Slovakia who wish to explore the country and its beautiful hiking destinations. The website offers its users a chance to book onto guided hikes in the region.
 
+![Hike Slovakia](docs/readme-img/am-i-responsive.png)
+
 You can view the live website [here](https://hike-slovakia.herokuapp.com/ "Hike Slovakia"). 
+
 
 ***
 ## User Experience (UX)
