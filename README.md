@@ -118,13 +118,20 @@ As an admin, I want to be able to:
 ***
 ## Notes on Development Process
 
+* I have decided to not follow the example e-commerce project Boutique Ado to the dot, and instead of selling products, I am selling services which are date-dependent. Boutique Ado being my introduction to Django, by not following its format, the learning curve has proven quite steep. Towards the end of the MVP development, I've started to feel like I am getting the grasp on Django, at long last! I can see many areas where I can improve the existing codebase and I am now quite excited to continue the development of this app, as well as other apps in the future.
+
 * Trello Board has been used since the beginning of development to track progress, capture ideas, and make notes (screenshot from early on in the process)
 ![trello board](docs/readme-img/trello-board.jpg)
 
-* Changes to design - layout of the website & pages was designed in advance, and wireframes were followed during deveopment, except for some minor changes; the only major one being adding a list of past bookings to a user's profile page.
+* Changes to design - layout of the website & pages was designed in advance, and wireframes were followed during development, except for some minor changes; the only major one being adding a list of past bookings to a user's profile page.
 
 ***
 ## Database Design
+
+![database schema](docs/readme-img/database-schema.jpg)
+
+The above schema shows only the tables created by me (except the auth_user one, I am however manipulating its data in my code). 
+Project Hike Slovakia currently contains 5 Django apps, and 5 custom models.
 
 ***
 ## Features

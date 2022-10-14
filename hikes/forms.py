@@ -13,5 +13,5 @@ class HikeForm (forms.ModelForm):
             'difficulty': 'Difficulty',
             'description': 'Description',
             'price': 'Price',
-            'image': 'Image',
+            'image': 'Image  (use image in landscape orientation - 1920x1280px ideally)',
         }
