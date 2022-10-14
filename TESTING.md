@@ -3,6 +3,7 @@ Go back to [README.md](https://github.com/monika-hrda/hike-slovakia/blob/main/RE
 ## Testing
 
 * Validator Testing
+* Stripe Testing
 * Page quality measurement / Performance
 * User Stories Testing
 * Manual Testing
@@ -50,7 +51,31 @@ Same goes for `Instance of 'OneToOneField' has no 'username' member`.
 
 All classes have been given docstrings.
 
+### Stripe Testing
+
+* The following Stripe test card numbers were used to test Stripe webhooks and the payment process:
+  * 4242 4242 4242 4242 - successful payment
+  * 4000 0025 0000 3155 - requires authentication for every payment
+  * 4000 0000 0000 9995 - card declined
+  * set expiry date to any future date
+  * more information on [Stripe website](https://stripe.com/docs/testing)
+* Stripe payments are working as expected.
+* After a successful payment, user is redirected to the Checkout Success page.
+
+### Page quality measurement by [web.dev](https://web.dev/measure/)
+
+![web.dev](docs/testing/page-quality.png)
+
+I was overall happy with these results. Heroku delivery is causing the biggest delay on page load, but the next suggested opportunity was to "Consider delivering critical JS/CSS inline and deferring all non-critical JS/styles."
+
+While I am not happy with the performance score of 63, in the report I can see the areas I can make improvements in. A lot of it is due to the app being deployed on Heroku, which introduces a lag, but I can improve speed for example by moving JS code to external files. 
+I am very happy with the other metrics - Accessibility, Best Practices, and SEO.
+
 ### User Stories Testing
+
+### Manual Testing
+
+## Error Testing
 
 ### Continuous Testing - Issues and Resolutions to issues found during testing
 
