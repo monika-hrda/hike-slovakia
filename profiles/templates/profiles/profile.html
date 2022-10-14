@@ -56,7 +56,7 @@
                         {% for booking in bookings %}
                         <tr>
                             <td>
-                                <a href="#" title="{{ booking.booking_number }}">
+                                <a href="{% url 'booking_history' booking.booking_number %}" title="{{ booking.booking_number }}">
                                     {{ booking.booking_number|truncatechars:6 }}
                                 </a>
                             </td>
