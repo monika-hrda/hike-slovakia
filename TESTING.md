@@ -75,7 +75,148 @@ I am very happy with the other metrics - Accessibility, Best Practices, and SEO.
 
 ### Manual Testing
 
-## Error Testing
+---
+### **Home Page**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Home page**         |                   |                           |    |
+|Heading to Home        |  Click Heading    | Returns to Home Page      |Pass|
+|Explore Hikes Button   |  Click Button     | Opens Hike List Page      |Pass|
+
+---
+
+### **Navigation incl. Footer**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Navigation**        |                   |                           |    |
+|Hikes link             |  Click Link       | Opens Hike List Page      |Pass|
+|Profile Link           |  Click Link       | Opens Profile Page        |Pass|
+|Log in Link            |  Click Link       | Opens Log in Page         |Pass|
+|Log out Link           |  Click Link       | Renders Log out prompt    |Pass|
+|Register Link          |  Click Link       | Opens Log in Page         |Pass|
+|Add New Hike Link      |  Click Link       | Opens Add New Hike Page |Pass|
+|Contact Us Link        |  Click Link       | Opens Contact Page |Pass|
+|Facebook Footer icon   |  Click Link       | Opens new Facebook tab in browser |Pass|
+|Instagram Footer icon  |  Click Link       | Opens new Instagram tab in browser |Pass|
+|Youtube Footer icon    |  Click Link       | Opens new Youtube tab in browser |Pass|
+
+---
+
+### **Sign up**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Sign up**           |                   |                           |    |
+|Form                   |  Submit empty form  | Expect prompt to fill in missing or incorrect fields  |Pass|
+|Form                   |  Submit complete entry form  | Returns to home page with success message      |Pass|
+|Back to Log in Button  |  Click button       | Returns to Login     |Pass|
+|Sign in Link   |  Click Link       | Opens Sign in Page             |Pass|
+|Email Confirmation    |  Create account and wait for email verification  | Returns email with link to finish account setup  |Pass|
+
+
+---
+
+### **Sign in**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Sign in**           |                   |                           |    |
+|Form          |  Submit Empty form           |  Expect prompt to fill in missing or incorrect fields   |Pass|
+|Form          |  Submit Complete form           | Returns to home page with success message             |Pass|
+|Remember Me   |  Click checkbox      | Remembers user next time they visit the site      |Pass|
+|Home Button   |  Click Button       | Returns to Home page                 |Pass|
+
+---
+### **Forget Password**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Forget Password**   |                   |                           |    |
+|Form                 |  Submit Empty form           |  Expect prompt to fill in missing or incorrect fields    |Pass|
+|Form                 |  Submit Complete form          |  Displays prompt to say an email has been sent   |Pass|
+|Back to Login button  |  Click button           | Return to Login Page          |Pass|
+
+
+---
+### **Log out**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Log out**           |                   |                           |    |
+|Log out link           |  Click link       | Render page with sign out button   |Pass|
+|Sign out button        |  Click button     | Logs user out and returns to home page  |Pass|
+
+---
+
+### **Profile page**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Profile Page**      |                   |                           |    |
+|Edit First Name        |  Add First name and save | New imformation is saved, with confirmation message above |Pass|
+|Edit Last Name         |  Add Last name and save  | New imformation is saved, with confirmation message above |Pass|
+|Edit Email Address     |  Update email and save   | If email is valid, it is saved with confirmation message above |Pass|
+|Edit Phone Number      |  Add Phone number and save | If a valid phone number, it is saved with confirmation message above |Pass|
+|Booking History        | Make booking and check history | Latest booking will show with booking number and info|Pass|
+
+---
+
+
+### **Hikes List**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Hikes**             |                   |                           |    |
+|Hikes List             |  View Hikes Page  | Hike List shows cards with hike images and info in them   |Pass|
+|Hikes List addtions    |  Add Hike and check Hikes list page after | Hike should be visible automatically    |Pass|
+|Hike Cards             |  Click on Hike Card  | Will take you to the specific Hike detail page of the card clicked on |Pass|
+
+---
+
+### **Hike Detail**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Hike Detail**       |                   |                           |    |
+|Hike Data      |  Create a new hike as admin and check info is all there  | All information management form is present |Pass|
+|Select date    |  Click on dropdown  | Can select a date from the dropdown  |Pass|
+|Select number of people  |  Click on dropdown  | Can select number of hikers from the dropdown  |Pass|
+|Submit empty form |  Try to submit empty form booking  | Form will not submit and user reminded to fill in required fields  |Pass|
+|Submit partially complete form |  Try to submit with only one option selected  | Form will not submit and user reminded to fill in required field |Pass|
+|Submit book hike  |  Click the book a hike button  | Redirected to booking confirmation page |Pass|
+|Edit booking button |  Click Edit booking button  | Return back to the hike detail page  |Pass|
+|Go to checkout button |  Click go to checkout button | Go to Checkout to make payment |Pass|
+|Edit Hike (ADMIN ONLY)    |  Click button  | Taken to hike management to edit hike   |Pass|
+|Delete Hike (ADMIN ONLY)    |  Click button | Removes hike from Hike list  |Pass|
+
+---
+
+### **Checkout**
+ | Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| Checkout   | Make Payment through Stripe  |  Payment goes through, with booking info below and confirmation message above |Pass|
+| Email Confirmation | Make booking and wait for email confirmation  | Email will arrive with receipt of booking info  |Pass|
+|Keep Exploring with us button | Click button  | Return to hikes list page |Pass|
+
+---
+
+### **Add Hike Page (Admin only)**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Hike Management**   |                   |                           |    |
+|Submit empty form  | Try to submit empty form | Form won't send, points to first required field not filled in |Pass|
+|Submit partially complete form  |  Try to submit partially complete form | Form won't send, points to first required field not filled in  |Pass|
+|Submit Complete form for new Hike |  Add new hike by clicking add Hike button | Hike adds and redirects to new hike detail page |Pass|
+|Image Upload  |  Upload image | Image should upload successfully |Pass|
+
+---
+
+### **Contact Page**
+| Element               | Action            | Expected Result           | Pass/Fail  |
+|:-------------         |:-------------     |:-----                     |:-----|
+| **Contact Page**       |                   |                           |    |
+|Form submission                 |  Submit Empty form | Form will not send and points to first required field not filled in |Pass|
+|Form submission                 |  Submit partially complete form | Form will not send and points to first required field not filled in |Pass|
+|Form submission                 |  Submit complete form | Form sends and confirmation message appears above |Pass|
+
+
+---
+
+
+### Error Testing
 
 ### Continuous Testing - Issues and Resolutions to issues found during testing
 
