@@ -15,8 +15,30 @@ Go back to [README.md](https://github.com/monika-hrda/hike-slovakia/blob/main/RE
 
 All pages were checked using [W3C Markup Validation Service](https://validator.w3.org/).
 
+The HTML code was validated using the page URI.
+
 There was one warning and two info messages found, which have been corrected. See below.
 ![HTML validation](docs/testing/html-validation-errors.png)
+
+![HTML validation](docs/testing/html-validation-pass.png)
+
+All pages are passing all checks.
+
+#### CSS
+
+The CSS file was checked using [W3C CSS Markup Validation Service](https://jigsaw.w3.org/css-validator/).
+
+It was tested both via URI and direct input. No errors were found.
+![CSS validation](docs/testing/css-validation-pass.png)
+
+#### JavaScript
+
+[JSHint](https://jshint.com/) was used to validate JavaScript code. 
+
+"One undefined variable" was raised for 'Stripe', which now got corrected to 'stripe'. Also, 3 semicolons were found to be missing :)
+
+The project's JavaScript is now passing this validator.
+
 
 ### User Stories Testing
 
