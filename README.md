@@ -109,11 +109,7 @@ As an admin, I want to be able to:
 
 ### Design
 
-* #### Colour Scheme
-
-* #### Typography
-
-* #### Imagery
+* Clean design lets images of the Slovak nature do the talking.
 
 ***
 ## Notes on Development Process

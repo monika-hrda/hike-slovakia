@@ -73,6 +73,52 @@ I am very happy with the other metrics - Accessibility, Best Practices, and SEO.
 
 ### User Stories Testing
 
+As a guest / not logged in user, I want to be able to:
+* easily understand what the purpose of the website is.
+  * Background image of nature in Slovakia.
+  * Button inviting users to explore.
+* navigate the website easily, so that I can find any relevant content.
+  * Navigation links working perfectly.
+* find more information about the company, so that I can understand more about what they are doing.
+  * Links to social media of the company in the footer.
+* view an offering of all guided hikes posted on the website.
+  * All hikes page shows all hikes.
+* find general details of any guided hike, as well as find out what dates they are scheduled on.
+  * Detail page shows all the details to both logged in and not logged in users.
+* contact the business owner / administrator, so that I can ask any specific questions and get more information.
+  * Contact form present on app.
+* view the website clearly on multiple devices, including my mobile device, so that I can achieve my other goals on the go.
+  * Accessibility tested.
+* register on the website so that I can book / pay for a hike I am interested in.
+  * Register function.
+
+As a registered / logged in user, in addition to the above, I want to be able to:
+* log into my account so that I can use the website’s services.
+  * Log in function works.
+* select the number of people I am booking a selected hike for.
+  * Selection of hike details avaialble on the hike detail page. Only future dates show.
+* start the booking process of the scheduled hike I am interested in.
+  * By clicking on the Book Now button.
+* securely pay for the scheduled hike I choose to book.
+  * Stripe functionality works perfectly.
+* receive a confirmation email after I successfully book my hike.
+  * Confirmation emails send.
+* view my profile - including my personal information as well as a list of hike bookings I made in the past.
+  * Profile page with all information and past bookings accessible on Profile page link.
+* update my personal information.
+  * Update function available on Profile page.
+* log out.
+  * Log out function works.
+
+As an admin, I want to be able to:
+* add a new hike offering, so that I can expand my services offering.
+  * Add New Hike link and page available to admin.
+* update and delete any existing hike offering, so that I can stay flexible in my offerings in accordance with my business needs.
+  * Edit and Delete buttons available on Hike Detail page.
+* schedule a new hike.
+  * Functionality available from admin part of the website.
+* access the Django admin portal easily.
+
 ### Manual Testing
 
 ---
@@ -217,6 +263,8 @@ I am very happy with the other metrics - Accessibility, Best Practices, and SEO.
 
 
 ### Error Testing
+
+Tested 404, 403 and 500 Error Pages show. 404 Error Page can be accessed by typing any non-existing link to browser, e.g. [404 Error](https://hike-slovakia.herokuapp.com/no-no-no)
 
 ### Continuous Testing - Issues and Resolutions to issues found during testing
 
