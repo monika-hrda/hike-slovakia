@@ -71,44 +71,71 @@ As an admin, I want to be able to:
 
 ### Wireframes
 
-* Home page
+<details><summary>Home page</summary>
+
 ![home page wireframe](docs/wireframes/home.png)
+</details>
 
-* Hike Offerings page
+<details><summary>Hike Offerings page</summary>
+
 ![classes page wireframe](docs/wireframes/hike-offerings.png)
+</details>
 
-* Hike Detail page
+<details><summary>Hike Detail page</summary>
+
 ![classes page wireframe](docs/wireframes/hike-detail.png)
+</details>
 
-* Hike Detail page - logged in user only
+<details><summary>Hike Detail page - logged in user only</summary>
+
 ![classes page wireframe](docs/wireframes/hike-detail-logged-in.png)
+</details>
 
-* Hike Detail page - admin user only
+<details><summary>Hike Detail page - admin user only</summary>
+
 ![classes page wireframe](docs/wireframes/hike-detail-admin.png)
+</details>
 
-* Review Booking page - logged in user only
+<details><summary>Review Booking page - logged in user only</summary>
+
 ![classes page wireframe](docs/wireframes/review-booking.png)
+</details>
 
-* Booking Confirmation page - logged in user only
-![classes page wireframe](docs/wireframes/booking-confirmation.png)
+<details><summary>Checkout page - logged in user only</summary>
 
-* Checkout page - logged in user only
 ![classes page wireframe](docs/wireframes/checkout.png)
+</details>
 
-* Profile page
+<details><summary>Booking Confirmation page - logged in user only</summary>
+
+![classes page wireframe](docs/wireframes/booking-confirmation.png)
+</details>
+
+<details><summary>Profile page</summary>
+
 ![profile page wireframe](docs/wireframes/profile.png)
+</details>
 
-* Add a hike page - admin user only
+<details><summary>Add a hike page - admin user only</summary>
+
 ![profile page wireframe](docs/wireframes/add-hike.png)
+</details>
 
-* Register page
+<details><summary>Register page</summary>
+
 ![register page wireframe](docs/wireframes/register.png)
+</details>
 
-* Login page
+<details><summary>Login page</summary>
+
 ![login page wireframe](docs/wireframes/login.png)
+</details>
 
-* 404 page
+<details><summary>404 page</summary>
+
 ![404 page wireframe](docs/wireframes/404.png)
+</details>
+
 
 ### Design
 
@@ -138,95 +165,87 @@ Project Hike Slovakia currently contains 5 Django apps, and 5 custom models.
 
 ### Existing Features
 
-#### Home Page (Logged out and Logged in):
+* **Home Page (Logged out and Logged in):**
+  - The Home Page features a beautiful backdrop of natural scenery from Slovakia, with a Navigation Bar at the top of the page. 
+  - The Nav Bar will add access to features such as a Profile Page for logged in Users and a Hike Management page for the Site Admin.
+  - A success modal will appear on the right hand side of the screen to inform the site viewer or admin that they are loggin in.
+  - In the centre of the screen, a button displaying "Explore Hikes" intices users to check out the hikes on offer in the Hikes list page.
 
-- The Home Page features a beautiful backdrop of natural scenery from Slovakia, with a Navigation Bar at the top of the page. 
-- The Nav Bar will add access to features such as a Profile Page for logged in Users and a Hike Management page for the Site Admin.
-- A success modal will appear on the right hand side of the screen to inform the site viewer or admin that they are loggin in.
-- In the centre of the screen, a button displaying "Explore Hikes" intices users to check out the hikes on offer in the Hikes list page.
+* **Hike List (Logged out and Logged in):**
+  - The Hike List Page displays cards with information on different hiking experiences, with up front information including difficulty and price.
+  - This list can be expaned by accessing the Hike Management page as an admin.
+  - Each card can be clicked on to take the user to the Hike detail page of that specific article, where they can access further information of what is involved in the Hike that they selected.
 
-#### Hike List (Logged out and Logged in):
+* **Hike Detail:**
+  - In the Hike Detail View, the same title, price and difficulty are displayed as on the cards from the list page, but here the site user can access further information about what the hike involves.
+  - Users are able to select scheduled dates of the hike from the drop down, to find out availability.
+  - Only future dates show here. 
+  - If the site user is signed in, they can choose number of hikers that intend to go on the trip, and continue with the booking process.
+  - The hike is then booked by clicking on the "Book Hike for x people" button, where x changes automatically based on the number of hikers inputted.
 
-- The Hike List Page displays cards with information on different hiking experiences, with up front information including difficulty and price.
-- This list can be expaned by accessing the Hike Management page as an admin.
-- Each card can be clicked on to take the user to the Hike detail page of that specific article, where they can access further information of what is involved in the Hike that they selected.
+* **Only Future Dates of Hikes Display in the dropdown selection for users**
 
-#### Hike Detail:
-
-- In the Hike Detail View, the same title, price and difficulty are displayed as on the cards from the list page, but here the site user can access further information about what the hike involves.
-- Users are able to select scheduled dates of the hike from the drop down, to find out availability.
-- If the site user is signed in, they can choose number of hikers that intend to go on the trip, and continue with the booking process.
-- The hike is then booked by clicking on the "Book Hike for x people" button, where x changes automatically based on the number of hikers inputted.
-
-#### Only Future Dates of Hikes Display in the dropdown selection for users.
-
-### Sign Up:
-
-- The sign up page is rendered using Django's Allauth package, and it takes the following information from the user in order to register for an account:
+* **Sign Up:**
+  - The sign up page is rendered using Django's Allauth package, and it takes the following information from the user in order to register for an account:
     - Email
     - Email again (confirmation)
     - Username
     - Password
     - Password again (confirmation)
 
-- If the form is filled in correctly, the user is sent a confiration email with a confirmation link. After clicking on confirm link, the user is signed in and redirected back to the home page, where the navigation will allow access to a profile page, and ability to make bookings is enabled.
+  - If the form is filled in correctly, the user is sent a confiration email with a confirmation link. After clicking on confirm link, the user is signed in and redirected back to the home page, where the navigation will allow access to a profile page, and ability to make bookings is enabled.
 
-### Sign In:
+* **Sign In:**
+  - Again, using the Django Allauth package, the Login page takes the user's email or username and their password in order to grant access to their account. 
+  - As per above, the user is redirected to the homepage when successfully logged in.
 
-- Again, using the Django Allauth package, the Login page takes the user's email or username and their password in order to grant access to their account. 
-- As per above, the user is redirected to the homepage when successfully logged in.
+* **Forgot Password:**
+  - The Forget Password page also comes with the Django Allauth package, and will request the user's email in order to reset the password.
+  - If the email address exists on file, an email is sent to that address with instructions to reset their password once the "Reset my password" button is clicked. 
+  - There is also a "Back to login" button to allow the user to quickly return to the login page.
 
-### Forgot Password:
+* **Profile Page:**
+  - The Profile page, which is accessible once the user is logged in, displays the user's information on file, as well as the user's previous hike booking history to the right hand side.
+  - The User can update their first name, last name, email and phone number in the inputs on the page, and this is saved when the "Update Information" button is clicked.
+  - A success modal will appear on the right hand side of the screen to inform the user that the information has been successfully updated.
+  - Email is a required / validated field, and phone number allows only numeric characters (but is not required).
+  - User can navigate to an individual booking success page of a past booking by clicking on booking number of selected hike.
 
-- The Forget Password page also comes with the Django Allauth package, and will request the user's email in order to reset the password.
-- If the email address exists on file, an email is sent to that address with instructions to reset their password once the "Reset my password" button is clicked. 
-- There is also a "Back to login" button to allow the user to quickly return to the login page.
+* **Hike Management - Add New Hike:**
+  - This is a site admin-only accessible page, where the site owner can add a new hike.
+  - The form takes all the information required to give the necessary details to the Hike List view and, of course, the Hike Detail view.
+  - The hike is added with the "Add" button, and the "Cancel" button redirects back to the Hikes List Page.
 
-### Profile Page:
+* **Hike Management - Edit Hike:**
+  - This is a site admin-only accessible page, where the site owner can update existing hike.
+  - The form takes all the information required to give the necessary details to the Hike List view and, of course, the Hike Detail view.
+  - The hike is updated with the "Edit" button, and the "Cancel" button redirects back to the Hike's Detail Page.
 
-- The Profile page, which is accessible once the user is logged in, displays the user's information on file, as well as the user's previous hike booking history to the right hand side.
-- The User can update their first name, last name, email and phone number in the inputs on the page, and this is saved when the "Update Information" button is clicked.
-- A success modal will appear on the right hand side of the screen to inform the user that the information has been successfully updated.
-- Email is a required / validated field, and phone number allows only numeric characters (but is not required).
-- User can navigate to an individual booking success page of a past booking by clicking on booking number of selected hike.
+* **Hike Management - Delete Hike:**
+  - There is a "Delete" button on each Hike's Detail Page, with which the site owner can delete the existing hike.
+  - Defensive Programming - on click of the "Delete" button, the admin is prompted to re-confirm the choice to delete the hike.
 
-### Hike Management
+* **Review Booking / Basket:**
+  - Upon selecting a hike (and date) to book, user is redirected to this page to review their booking.
+  - They can choose to edit their selection and they are redirected back to the individual hike page.
+  - Or they can continue to checkout page.
 
-## Add New Hike:
-- This is a site admin-only accessible page, where the site owner can add new hikes.
-- The form takes all the information required to give the necessary details to the Hike List view and, of course, the Hike Detail view.
-- The hike is added with the "Add" button, and the "Cancel" button redirects back to the Hikes List Page.
+* **Checkout:**
+  - User can see the amount they are about to pay.
+  - Stripe picks up any invalid card numbers and returns appropriate error messages.
+  - Upon entering valid payment card information, the user is given a success modal and redirected to successful booking page.
 
-## Edit Hike:
-- This is a site admin-only accessible page, where the site owner can update existing hike.
-- The form takes all the information required to give the necessary details to the Hike List view and, of course, the Hike Detail view.
-- The hike is updated with the "Edit" button, and the "Cancel" button redirects back to the Hike's Detail Page.
+* **Successful Booking:**
+  - User can see details of the hike they just purchased.
 
-## Delete Hike:
-- This is a site admin-only accessible page, where the site owner can delete existing hike.
-- Defensive Programming - on click of the 'Delete' button, the admin is prompted to re-confirm the choice to delete the hike.
+* **Confirmation Email:**
+  - Upon successful booking, user is sent a confirmation email with details of their booking.
 
-## Review Booking / Baket:
-- Upon selecting a hike to book, user is redirected to a page to review their booking.
-- They can choose to edit their selection and they are redirected back to the individual hike page.
-- Or they can continue to checkout page.
+* **Contact Us:**
+  - Users can fill in a contact form to get in touch with the Hike Slovakia company. 
+  - Admin is able to review the sent messages in the Admin portion of the site.
 
-## Checkout:
-- User can see the amount they are about to pay.
-- Stripe picks up any invalid card numbers and returns appropriate error messages.
-- Upon entering valid payment card information, the user is given a success modal and redirected to successful booking page.
-
-## Successful Booking:
-- User can see details of the hike they just purchased.
-
-## Confirmation Email:
-- Upon successful booking, user is sent a confirmation email with details of their booking.
-
-## Contact Us:
-- Users can fill in a contact form to get in touch with the Hike Slovakia company. 
-- Admin is able to review the sent messages in the Admin portion of the site.
-
-## 404, 403 and 500 Error Pages
+* **404, 403 and 500 Error Pages**
 
 ### Features Left to Implement in the Future
 
